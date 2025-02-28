@@ -1,6 +1,6 @@
-from flask import Flask
 from dash import Dash
-from config.config import Config
+from flask import Flask
+from app.config import Config
 
 def create_app():
     # Initialize Flask
@@ -16,11 +16,8 @@ def create_app():
     )
     
     # Import and register routes
-    from app.routes.main import init_callbacks
-    init_callbacks(app)
-    
-    # Import and set layout
-    from app.routes.main import layout
+    from app.routes.main import init_callbacks, layout
     app.layout = layout
+    init_callbacks(app)
     
     return app 

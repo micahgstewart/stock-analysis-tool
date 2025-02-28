@@ -3,4 +3,8 @@ flask==3.0.2
 yfinance==0.2.36
 plotly==5.18.0
 pandas==2.2.0
-numpy==1.26.4 
+numpy==1.26.4
+torch>=2.5.0
+scikit-learn
+google-cloud-storage
+google-cloud-aiplatform 
