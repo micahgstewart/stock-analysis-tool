@@ -228,6 +228,17 @@ def get_financial_metrics(stock):
     except Exception as e:
         return None, None, None
 
+def fetch_stock_data(ticker_symbol, period='1y', interval='1d'):
+    print(f"Fetching data for {ticker_symbol}...")
+    try:
+        ticker = yf.Ticker(ticker_symbol)
+        # Remove the progress parameter
+        stock_data = ticker.history(period=period, interval=interval)
+        return stock_data
+    except Exception as e:
+        print(f"Error fetching data for {ticker_symbol}: {str(e)}")
+        return None
+
 def get_stock_data(ticker):
     if not ticker:
         return {}, {}, {}, {}, 0, ''
@@ -246,8 +257,7 @@ def get_stock_data(ticker):
                 stock = yf.Ticker(ticker)
                 df = stock.history(
                     period="1y",
-                    interval="1d",
-                    progress=False
+                    interval="1d"
                 )
                 
                 # Try to access info to verify the connection
